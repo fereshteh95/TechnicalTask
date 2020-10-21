@@ -12,6 +12,15 @@ To train such network we need to use a positive and negative image as well as th
 
 ![](https://github.com/fereshteh95/TechnicalTask/blob/main/Images/TRAIN.JPG)
 
-The network is then trained to minimize the distance between query feature and positive feature while, simultaneously, maximizing the distance between query feature and negative feature. This method ensureds that the extracted features from an image are accurate enough. 
+The network is then trained to minimize the distance between query feature and positive feature while, simultaneously, maximizing the distance between query feature and negative feature. This method ensures that the extracted features from an image are accurate enough. 
 
-However, since I do not have access to a database large enough to train a deep neural network, I will be using a simplre yet effective method via OpenCV and predefined cv2.matchTemplate() method.It simply slides the template image over the input image (as in 2D convolution) and compares the template and patch of input image under the template image. Several comparison methods are implemented in OpenCV. (You can check docs for more details). It returns a grayscale image, where each pixel denotes how much does the neighbourhood of that pixel match with template. 
+However, since I do not have access to a database large enough to train a deep neural network, I will be using a simpler yet effective method via OpenCV and predefined cv2.matchTemplate() method. It simply slides the template image over the input image (as in 2D convolution) and compares the template and patch of input image under the template image. Several comparison methods are implemented in OpenCV. (You can check docs for more details). It returns a grayscale image, where each pixel denotes how much does the neighborhood of that pixel match with template. 
+
+
+
+## Usage
+
+```shell
+python Task234.py --img 'image directory' --query 'query directory'
+```
+
