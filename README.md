@@ -4,13 +4,13 @@
 
 A common method for content based image retrieval is using CNNs and Deep Learning to extract the features of the query image and compare the features with the image features in the database. The architecture for such network is show blew.
 
-![](.\Images\ARCHITECTURE.JPG)
+![](https://github.com/fereshteh95/TechnicalTask/blob/main/Images/ARCHITECTURE.JPG)
 
 So when a user submits a query image, it extracts features from the image and then we compare query features with the features in the database and then we rank the relevant results and return them.
 
 To train such network we need to use a positive and negative image as well as the query image. Positive image is an image similar to query and negative image is different from the query.
 
-![](.\Images\TRAIN.JPG)
+![](https://github.com/fereshteh95/TechnicalTask/blob/main/Images/TRAIN.JPG)
 
 The network is then trained to minimize the distance between query feature and positive feature while, simultaneously, maximizing the distance between query feature and negative feature. This method ensureds that the extracted features from an image are accurate enough. 
 
