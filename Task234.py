@@ -26,7 +26,7 @@ if not os.path.isfile(temp_path):
     
 
 img = cv2.imread(img_path, 0)
-color_img = cv2.imread(img_path)
+color_img = cv2.cvtColor(cv2.imread(img_path), cv2.COLOR_BGR2RGB)
 template = cv2.imread(temp_path,0)
 w, h = template.shape[::-1]
 
@@ -35,7 +35,11 @@ res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
 threshold = 0.9
 loc = np.where( res >= threshold)
 for pt in zip(*loc[::-1]):
-    cv2.rectangle(color_img, pt, (pt[0] + w, pt[1] + h), (0,0,255), 2)
+    cv2.rectangle(color_img, pt, (pt[0] + w, pt[1] + h), (255,0,0), 2)
+
+
+if color_img.shape[1] > 1600 or color_img.shape[0]>900:
+    color_img = cv2.resize(color_img, dsize=(1600, 900))
 
 # min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
 # top_left = max_loc
@@ -44,7 +48,11 @@ for pt in zip(*loc[::-1]):
 # cv2.rectangle(color_img,top_left, bottom_right, (0, 0, 255), 2)
 
 print("--- %s ms ---" % (round((time.time() - start_time)*1000, 2)))
-print("Press any Key to Exit")
-cv2.imshow("Image", color_img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+
+plt.imshow(color_img)
+plt.xticks([])
+plt.yticks([])
+plt.show()
+# cv2.imshow("Image", color_img)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
